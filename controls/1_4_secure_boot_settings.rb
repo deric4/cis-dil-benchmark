@@ -29,6 +29,9 @@ control 'cis-dil-benchmark-1.4.1' do
 
   describe.one do
     grub_conf.locations.each do |f|
+      
+      next unless file(f).exist?
+      
       describe file(f) do
         it { should exist }
         it { should_not be_readable.by 'group' }
